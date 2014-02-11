@@ -1,11 +1,14 @@
 # Create a docker base image with a few essentials
 FROM stackbrew/ubuntu:saucy
-MAINTAINER Ilkka Anttonen version: 0.1
+MAINTAINER Ilkka Anttonen version: 0.2
 
 # Update the APT cache
 RUN sed -i.bak 's/main$/main universe/' /etc/apt/sources.list
 RUN apt-get update
 RUN apt-get upgrade -y
+
+# Disable IPv6 for apt for now because we use an internal DNS server
+RUN echo 'Acquire::ForceIPv4 "true";' > /etc/apt/apt.conf
 
 # Install and setup useful base packages
 RUN apt-get install -y curl lsb-release supervisor openssh-server rsyslog git net-tools joe iputils-ping
