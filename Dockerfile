@@ -8,7 +8,7 @@ RUN apt-get update
 RUN apt-get upgrade -y
 
 # Install and setup useful base packages
-RUN apt-get install -y curl lsb-release supervisor openssh-server rsyslog git net-tools joe iputils-ping
+RUN apt-get install -y curl lsb-release supervisor openssh-server rsyslog git net-tools joe iputils-ping unzip dnsutils
 RUN mkdir -p /var/run/sshd
 RUN mkdir -p /var/log/supervisor
 RUN locale-gen en_US en_US.UTF-8
@@ -23,7 +23,6 @@ RUN sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config
 RUN sed -ri 's/#UsePAM no/UsePAM no/g' /etc/ssh/sshd_config
 
 # Install Consul
-RUN apt-get install -y unzip dnsutils
 RUN wget https://dl.bintray.com/mitchellh/consul/0.2.0_linux_amd64.zip -O /tmp/consul.zip
 RUN unzip /tmp/consul.zip -d /usr/local/bin
 RUN chmod oug+rx /usr/local/bin/consul
