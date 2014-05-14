@@ -1,1 +1,1 @@
-Docker trusted build for Ubuntu 13.10 including some essentials.
+Docker trusted build for Ubuntu 14.04 including some essentials.
