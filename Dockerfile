@@ -1,5 +1,5 @@
 # Create a docker base image with a few essentials
-FROM stackbrew/ubuntu:trusty
+FROM ubuntu:trusty
 MAINTAINER Ilkka Anttonen version: 0.6
 
 # Update the APT cache
