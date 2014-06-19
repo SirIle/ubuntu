@@ -1,6 +1,6 @@
 # Create a docker base image with a few essentials
 FROM stackbrew/ubuntu:trusty
-MAINTAINER Ilkka Anttonen version: 0.5
+MAINTAINER Ilkka Anttonen version: 0.6
 
 # Update the APT cache
 RUN sed -i.bak 's/main$/main universe/' /etc/apt/sources.list
@@ -23,7 +23,7 @@ RUN sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config
 RUN sed -ri 's/#UsePAM no/UsePAM no/g' /etc/ssh/sshd_config
 
 # Install Consul
-RUN wget https://dl.bintray.com/mitchellh/consul/0.2.0_linux_amd64.zip -O /tmp/consul.zip
+RUN wget https://dl.bintray.com/mitchellh/consul/0.3.0_linux_amd64.zip -O /tmp/consul.zip
 RUN unzip /tmp/consul.zip -d /usr/local/bin
 RUN chmod oug+rx /usr/local/bin/consul
 
